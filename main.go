@@ -44,6 +44,6 @@ func main() {
 	http.Handle("/", promhttp.InstrumentHandlerCounter(httpRequestsTotal, handler))
 	http.Handle("/err", promhttp.InstrumentHandlerCounter(httpRequestsTotal, notfound))
 
-	http.Handle("/metrics", promhttp.HandlerFor(r, promhttp.HandlerOpts{}))
+	http.Handle("/admin/prometheus-metrics", promhttp.HandlerFor(r, promhttp.HandlerOpts{}))
 	log.Fatal(http.ListenAndServe(bind, nil))
 }
